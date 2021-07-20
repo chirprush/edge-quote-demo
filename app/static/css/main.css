@@ -3,6 +3,11 @@
 :root {
 	--header-purple: #481776;
 	--text-gray: #5a6771;
+	--white: #ffffff;
+	--red: #e30450;
+	--blue: #0069c3;
+	--dark-blue: #481776;
+	--green: #00837b;
 }
 
 .selector-section {
@@ -12,12 +17,33 @@
 	padding-bottom: 20px;
 }
 
-.selector-section h2 {
+.selector-title .selector-heading {
 	font-family: 'Noto Serif', serif;
 	font-weight: 400;
 	font-size: 50px;
 	color: var(--header-purple);
 	margin: 0;
+}
+
+.selector-title {
+	display: flex;
+	list-style-type: none;
+}
+
+.selector-title .selector-status {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	margin-left: 10px;
+	font-size: 2em;
+}
+
+.selector-title .not-submitted {
+	color: var(--red);
+}
+
+.selector-title .submitted {
+	color: var(--green);
 }
 
 .selector-main {
@@ -32,7 +58,7 @@
 	font-family: "Montserrat", sans-serif;
 	font-size: 15px;
 	line-height: 2;
-	width: 50%;
+	width: 60%;
 	color: var(--text-gray);
 }
 
@@ -41,11 +67,32 @@
 	font-weight: bold;
 }
 
+.submit-button {
+	border: none;
+	background-color: var(--blue);
+	color: var(--white);
+	padding-left: 30px;
+	padding-right: 30px;
+	padding-top: 15px;
+	padding-bottom: 15px;
+	letter-spacing: 1.8px;
+	transition: 0.3s background-color;
+	font-weight: bold;
+	text-transform: uppercase;
+	margin-top: 20px;
+	margin-left: 50px;
+	font-family: "Montserrat", sans-serif;
+}
+
+.submit-button:hover {
+	background-color: var(--dark-blue);
+}
+
 .selector-dropdown {
-	font-size: 17px;
+	font-size: 15px;
 	font-family: "Montserrat", sans-serif;
 	border: none;
-	background: #eee;
+	background-color: #eee;
 }
 
 .radio-container br {

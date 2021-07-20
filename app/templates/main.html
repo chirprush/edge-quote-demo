@@ -5,10 +5,14 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width,initial-scale=1" />
 		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/main.css') }}" media="screen" />
+		<script type="text/javascript" src="{{ url_for('static', filename='js/main.js') }}"></script>
 	</head>
 	<body>
 		<div class="selector-section">
-			<h2>Location</h2>
+			<ul class="selector-title">
+				<li class="selector-heading">Location</li>
+				<li class="selector-status not-submitted">✖</li>
+			</ul>
 			<div class="selector-main">
 				<p>This is sample paragraph made to see how good this specific styling works. In the future, something more concrete and relating to the selection might be placed here.</p>
 				<label for="selector-location">Select a data location: </label>
@@ -20,9 +24,13 @@
 					</optgroup>
 				</select>
 			</div>
+			<button class="submit-button">Submit</button>
 		</div>
 		<div class="selector-section">
-			<h2>Cabinet Space</h2>
+			<ul class="selector-title">
+				<li class="selector-heading">Cabinet Space</li>
+				<li class="selector-status not-submitted">✖</li>
+			</ul>
 			<div class="selector-main">
 				<p>This is sample paragraph made to see how good this specific styling works. In the future, something more concrete and relating to the selection might be placed here.</p>
 				<div class="radio-container">
