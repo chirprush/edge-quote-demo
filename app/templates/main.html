@@ -17,14 +17,14 @@
 				<p>This is sample paragraph made to see how good this specific styling works. In the future, something more concrete and relating to the selection might be placed here.</p>
 				<label for="selector-location">Select a data location: </label>
 				<!-- TODO: Connect the options with the database via arguments to template -->
-				<select name="Location" id="selector-location" class="selector-dropdown">
+				<select name="Location" id="selector-location" class="selector-dropdown" onchange="setParentStatus(this.parentNode, false)">
 					<optgroup>
 						<option value="0">Pittsburgh, PA</option>
 						<option value="1">New York City, NY</option>
 					</optgroup>
 				</select>
 			</div>
-			<button class="submit-button">Submit</button>
+			<button class="submit-button" onclick="setParentStatus(this, true)">Submit</button>
 		</div>
 		<div class="selector-section">
 			<ul class="selector-title">
