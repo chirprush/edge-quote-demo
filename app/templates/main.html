@@ -8,7 +8,7 @@
 		<script type="text/javascript" src="{{ url_for('static', filename='js/main.js') }}"></script>
 	</head>
 	<body>
-		<div class="selector-section">
+		<div class="selector-section" id="location-section">
 			<ul class="selector-title">
 				<li class="selector-heading">Location</li>
 				<li class="selector-status not-submitted">✖</li>
@@ -17,33 +17,31 @@
 				<p>This is sample paragraph made to see how good this specific styling works. In the future, something more concrete and relating to the selection might be placed here.</p>
 				<label for="selector-location">Select a data location: </label>
 				<!-- TODO: Connect the options with the database via arguments to template -->
-				<select name="Location" id="selector-location" class="selector-dropdown" onchange="setParentStatus(this.parentNode, false)">
+				<select name="Location" id="selector-location" class="selector-dropdown" onchange="setLocationStatus(this.parentNode, false)">
 					<optgroup>
 						<option value="0">Pittsburgh, PA</option>
 						<option value="1">New York City, NY</option>
 					</optgroup>
 				</select>
+				<br />
+				<button class="selector-button" onclick="setLocationStatus(this.parentNode, true)">Submit</button>
 			</div>
-			<button class="submit-button" onclick="setParentStatus(this, true)">Submit</button>
 		</div>
-		<div class="selector-section">
+		<div class="selector-section" id="cabinets-section">
 			<ul class="selector-title">
-				<li class="selector-heading">Cabinet Space</li>
+				<li class="selector-heading">Cabinets</li>
 				<li class="selector-status not-submitted">✖</li>
 			</ul>
 			<div class="selector-main">
 				<p>This is sample paragraph made to see how good this specific styling works. In the future, something more concrete and relating to the selection might be placed here.</p>
-				<div class="radio-container">
-					<label>
-						<input type="radio" value="0" name="r-cabinetspace" />
-						Less than one cabinet
-					</label>
-					<br />
-					<label>
-						<input type="radio" value="1" name="r-cabinetspace" />
-						More than one cabinet
-					</label>
+				<div id="selector-cabinet-buttons">
+					<button class="selector-button button-disabled" disabled="true" onclick="selectCabinetAmount(LESS_THAN_ONE)">Less than one</button>
+					<button class="selector-button button-disabled" disabled="true" onclick="selectCabinetAmount(MORE_THAN_ONE)">More than one</button>
+					<button class="selector-button button-disabled" disabled="true" onclick="selectCabinetAmount(SPECIAL_BUNDLE)">Bundles</button>
 				</div>
+				<div id="selector-cabinet-attributes">
+				</div>
+				<button class="selector-button button-disabled" disabled="true" onclick="setParentStatus(this.parentNode, true)">Submit</button>
 			</div>
 		</div>
 	</body>

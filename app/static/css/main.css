@@ -2,9 +2,11 @@
 
 :root {
 	--header-purple: #481776;
-	--text-gray: #5a6771;
+	--gray: #5a6771;
+	--light-gray: #7a8791;
 	--white: #ffffff;
 	--red: #e30450;
+	--light-blue: #0092cf;
 	--blue: #0069c3;
 	--dark-blue: #481776;
 	--green: #00837b;
@@ -50,16 +52,17 @@
 	margin-left: 50px;
 	font-family: "Montserrat", sans-serif;
 	font-size: 15px;
-	color: var(--text-gray);
+	color: var(--gray);
 }
 
 .selector-main p {
 	margin-top: 10px;
+	margin-bottom: 5px;
 	font-family: "Montserrat", sans-serif;
 	font-size: 15px;
 	line-height: 2;
 	width: 60%;
-	color: var(--text-gray);
+	color: var(--gray);
 }
 
 .selector-main label {
@@ -67,7 +70,7 @@
 	font-weight: bold;
 }
 
-.submit-button {
+.selector-button {
 	border: none;
 	background-color: var(--blue);
 	color: var(--white);
@@ -79,13 +82,25 @@
 	transition: 0.3s background-color;
 	font-weight: bold;
 	text-transform: uppercase;
-	margin-top: 20px;
-	margin-left: 50px;
+	margin-top: 10px;
+	margin-right: 20px;
 	font-family: "Montserrat", sans-serif;
 }
 
-.submit-button:hover {
+.selector-button:hover {
 	background-color: var(--dark-blue);
+}
+
+.button-disabled {
+	background-color: var(--light-gray);
+}
+
+.button-disabled:hover {
+	background-color: var(--light-gray);
+}
+
+.button-active {
+	background-color: var(--light-blue);
 }
 
 .selector-dropdown {
@@ -93,10 +108,6 @@
 	font-family: "Montserrat", sans-serif;
 	border: none;
 	background-color: #eee;
-}
-
-.radio-container br {
-	display: block;
 	margin-top: 10px;
-	content: " ";
+	margin-bottom: 10px;
 }
