@@ -3,6 +3,7 @@
 :root {
 	--header-purple: #481776;
 	--gray: #5a6771;
+	--bundle-bg: #dddddd;
 	--light-gray: #7a8791;
 	--white: #ffffff;
 	--red: #e30450;
@@ -110,4 +111,12 @@
 	background-color: #eee;
 	margin-top: 10px;
 	margin-bottom: 10px;
+}
+
+.bundle-label {
+	margin-top: 10px;
+}
+
+.bundle-description {
+	padding-left: 40px;
 }

@@ -17,14 +17,14 @@
 				<p>This is sample paragraph made to see how good this specific styling works. In the future, something more concrete and relating to the selection might be placed here.</p>
 				<label for="selector-location">Select a data location: </label>
 				<!-- TODO: Connect the options with the database via arguments to template -->
-				<select name="Location" id="selector-location" class="selector-dropdown" onchange="setLocationStatus(this.parentNode, false)">
+				<select name="Location" id="selector-location" class="selector-dropdown" onchange="setLocationStatus(false)">
 					<optgroup>
 						<option value="0">Pittsburgh, PA</option>
 						<option value="1">New York City, NY</option>
 					</optgroup>
 				</select>
 				<br />
-				<button class="selector-button" onclick="setLocationStatus(this.parentNode, true)">Submit</button>
+				<button class="selector-button" onclick="setLocationStatus(true)">Submit</button>
 			</div>
 		</div>
 		<div class="selector-section" id="cabinets-section">
@@ -40,8 +40,36 @@
 					<button class="selector-button button-disabled" disabled="true" onclick="selectCabinetAmount(SPECIAL_BUNDLE)">Bundles</button>
 				</div>
 				<div id="selector-cabinet-attributes">
+					<div id="selector-less-attributes" hidden>
+						<p>1</p>
+					</div>
+					<div id="selector-more-attributes" hidden>
+						<p>2</p>
+					</div>
+					<div id="selector-bundle-attributes" hidden>
+						<div class="bundle">
+							<div class="bundle-label">
+								<input id="bundle-label0" type="radio" name="r-bundles" onclick="setParentStatus('cabinets-section', false)"></input>
+								<label for="bundle-label0">Bundle 1</label>
+							</div>
+							<div class="bundle-description">
+								<p>MRC: $100</p>
+								<p>NRC: $200</p>
+							</div>
+						</div>
+						<div class="bundle">
+							<div class="bundle-label">
+								<input id="bundle-label1" type="radio" name="r-bundles" onclick="setParentStatus('cabinets-section', false)"></input>
+								<label for="bundle-label1">Bundle 2</label>
+							</div>
+							<div class="bundle-description">
+								<p>MRC: $150</p>
+								<p>NRC: $200</p>
+							</div>
+						</div>
+					</div>
 				</div>
-				<button class="selector-button button-disabled" disabled="true" onclick="setParentStatus(this.parentNode, true)">Submit</button>
+				<button class="selector-button button-disabled" disabled="true" onclick="setParentStatus('cabinets-section', true)">Submit</button>
 			</div>
 		</div>
 	</body>

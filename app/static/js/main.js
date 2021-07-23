@@ -10,8 +10,8 @@ const setSectionStatus = (section, enabled) => {
 	}
 }
 
-const setParentStatus = (element, value) => {
-	let selector_status = element.parentNode.getElementsByClassName("selector-status")[0];
+const setParentStatus = (id, value) => {
+	let selector_status = document.getElementById(id).getElementsByClassName("selector-status")[0];
 	if (value) {
 		selector_status.status_value = value;
 		selector_status.className = "selector-status submitted";
@@ -23,8 +23,9 @@ const setParentStatus = (element, value) => {
 	}
 }
 
-const setLocationStatus = (element, value) => {
-	setParentStatus(element, value);
+const setLocationStatus = (value) => {
+	setParentStatus("location-section", value);
+	selectCabinetAmount(-1);
 	setSectionStatus(document.getElementById("cabinets-section"), value);
 }
 
@@ -34,12 +35,15 @@ const SPECIAL_BUNDLE = 2;
 
 const selectCabinetAmount = (index) => {
 	let cabinet_buttons = document.getElementById("selector-cabinet-buttons");
-	setParentStatus(cabinet_buttons.parentNode, false);
+	let cabinet_attributes = document.getElementById("selector-cabinet-attributes");
+	setParentStatus("cabinets-section", false);
 	for (let i = 0; i < cabinet_buttons.children.length; ++i) {
 		if (i == index) {
 			cabinet_buttons.children[i].className = "selector-button button-active";
+			cabinet_attributes.children[i].hidden = false;
 		} else {
 			cabinet_buttons.children[i].className = "selector-button";
+			cabinet_attributes.children[i].hidden = true;
 		}
 	}
 }
