@@ -5,8 +5,12 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width,initial-scale=1" />
 		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/main.css') }}" media="screen" />
-		<script type="text/javascript" src="{{ url_for('static', filename='js/main.js') }}"></script>
+		<script type="module" src="{{ url_for('static', filename='js/components/index.js') }}"></script>
 	</head>
+	<body>
+		<LocationSection id="location-section" />
+	</body>
+	<!--
 	<body>
 		<div class="selector-section" id="location-section">
 			<ul class="selector-title">
@@ -16,7 +20,6 @@
 			<div class="selector-main">
 				<p>This is sample paragraph made to see how good this specific styling works. In the future, something more concrete and relating to the selection might be placed here.</p>
 				<label for="selector-location">Select a data location: </label>
-				<!-- TODO: Connect the options with the database via arguments to template -->
 				<select name="Location" id="selector-location" class="selector-dropdown" onchange="setLocationStatus(false)">
 					<optgroup>
 						<option value="0">Pittsburgh, PA</option>
@@ -112,4 +115,5 @@
 			</div>
 		</div>
 	</body>
+	-->
 </html>

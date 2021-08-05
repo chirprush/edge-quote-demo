@@ -13,50 +13,7 @@
 	--green: #00837b;
 }
 
-.selector-section {
-	width: 70%;
-	padding-left: 10%;
-	padding-top: 5px;
-	padding-bottom: 20px;
-}
-
-.selector-title .selector-heading {
-	font-family: 'Noto Serif', serif;
-	font-weight: 400;
-	font-size: 50px;
-	color: var(--header-purple);
-	margin: 0;
-}
-
-.selector-title {
-	display: flex;
-	list-style-type: none;
-}
-
-.selector-title .selector-status {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	margin-left: 10px;
-	font-size: 2em;
-}
-
-.selector-title .not-submitted {
-	color: var(--red);
-}
-
-.selector-title .submitted {
-	color: var(--green);
-}
-
-.selector-main {
-	margin-left: 50px;
-	font-family: "Montserrat", sans-serif;
-	font-size: 15px;
-	color: var(--gray);
-}
-
-.selector-main p {
+p {
 	margin-top: 10px;
 	margin-bottom: 5px;
 	font-family: "Montserrat", sans-serif;
@@ -66,12 +23,55 @@
 	color: var(--gray);
 }
 
-.selector-main label {
+LocationSection {
+	width: 70%;
+	margin-left: 20px;
+	margin-top: 5px;
+	margin-bottom: 20px;
+}
+
+LocationSection ul {
+	display: flex;
+	list-style-type: none;
+}
+
+LocationSection .indented {
+	margin-left: 80px;
+	font-family: "Montserrat", sans-serif;
+	font-size: 15px;
+	color: var(--gray);
+}
+
+.heading {
+	font-family: 'Noto Serif', serif;
+	font-weight: 400;
+	font-size: 50px;
+	color: var(--header-purple);
+	margin: 0;
+}
+
+.heading-status {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	margin-left: 10px;
+	font-size: 2em;
+}
+
+.not-submitted {
+	color: var(--red);
+}
+
+.submitted {
+	color: var(--green);
+}
+
+.dropdown label {
 	font-size: 17px;
 	font-weight: bold;
 }
 
-.selector-button {
+.button {
 	border: none;
 	background-color: var(--blue);
 	color: var(--white);
@@ -88,7 +88,7 @@
 	font-family: "Montserrat", sans-serif;
 }
 
-.selector-button:hover {
+.button:hover {
 	background-color: var(--dark-blue);
 }
 
@@ -104,7 +104,7 @@
 	background-color: var(--light-blue);
 }
 
-.selector-dropdown {
+.dropdown label select {
 	font-size: 15px;
 	font-family: "Montserrat", sans-serif;
 	border: none;
