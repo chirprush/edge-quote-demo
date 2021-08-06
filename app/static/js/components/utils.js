@@ -25,6 +25,18 @@ class Component {
 	}
 }
 
+const range = (...args) => {
+	if (args.length === 1) {
+		let [n] = args;
+		return [...Array(n).keys()];
+	} else if (args.length === 2) {
+		let [low, high] = args;
+		return [...Array(high).keys].slice(low);
+	} else {
+		throw `Error: too many arguments passed to function "render()"`;
+	}
+}
+
 const $ = (tagname, ...attributes) => {
 	let text = "";
 	let children = [];
@@ -51,7 +63,9 @@ const $ = (tagname, ...attributes) => {
 	return el;
 }
 
-window.$ = $;
+const $for = (array, f) => {
+	return array.map(f);
+}
 
 const getSection = (id) => {
 	let el = document.getElementById(id);
@@ -61,4 +75,4 @@ const getSection = (id) => {
 	return el.__obj;
 }
 
-export { Component, $, getSection };
+export { Component, range, $, $for, getSection };

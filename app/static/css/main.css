@@ -23,19 +23,19 @@ p {
 	color: var(--gray);
 }
 
-LocationSection {
+.section {
 	width: 70%;
 	margin-left: 20px;
 	margin-top: 5px;
 	margin-bottom: 20px;
 }
 
-LocationSection ul {
+.section ul {
 	display: flex;
 	list-style-type: none;
 }
 
-LocationSection .indented {
+.section .indented {
 	margin-left: 80px;
 	font-family: "Montserrat", sans-serif;
 	font-size: 15px;

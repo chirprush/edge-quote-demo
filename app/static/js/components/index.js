@@ -1,6 +1,6 @@
-import * as location_section from "./location_section.js";
+import * as sections from "./sections.js";
 
-let classes = {...location_section};
+let classes = sections;
 
 for (let [name, value] of Object.entries(classes)) {
 	let elements = document.getElementsByTagName(name);
