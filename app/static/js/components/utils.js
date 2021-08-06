@@ -9,7 +9,9 @@ class Component {
 
 	setProp(props) {
 		for (let [name, value] of Object.entries(props)) {
-			this[name] = value;
+			if (value !== null && value !== undefined) {
+				this[name] = value;
+			}
 		}
 		this.__el.textContent = "";
 		let rendered = this.render();

@@ -6,10 +6,22 @@ import { Button } from "./button.js"
 class LocationSection extends SectionComponent {
 	constructor(el) {
 		super(el);
-		this.dropdown = new Dropdown("Select a data location: ", "location", ["Pittsburgh, PA", "New York City, NY"]);
+		this.dropdown = new Dropdown(
+			"Select a data location: ",
+			["Pittsburgh, PA", "New York City, NY"],
+			{
+				name: "location",
+				onchange: () => getSection("location-section").setProp({ submitted: false })
+			}
+		);
 		this.submit_button = new Button("Submit", () => {
 			getSection("location-section").setProp({ submitted: true });
 		});
+	}
+
+	setProp(props) {
+		this.submitted = false;
+		super.setProp(props);
 	}
 
 	render() {
