@@ -10,6 +10,9 @@ class SectionComponent extends Component {
 
 	setProp(props) {
 		this.submitted = false;
+		if (this.next_section) {
+			getSection(this.next_section).setProp({ enabled: false });
+		}
 		super.setProp(props);
 	}
 
@@ -22,13 +25,13 @@ class SectionComponent extends Component {
 		]);
 	}
 
-	renderSubmit(section_id, next_id) {
+	renderSubmit() {
 		return $("button",
 			{
 				onclick: () => {
-					getSection(section_id).setProp({ submitted: true });
-					if (next_id) {
-						getSection(next_id).setProp({ enabled: true });
+					getSection(this.id).setProp({ submitted: true });
+					if (this.next_section) {
+						getSection(this.next_section).setProp({ enabled: true });
 					}
 				},
 				className: `button ${this.enabled ? "" : "button-disabled"}`,
@@ -42,12 +45,14 @@ class SectionComponent extends Component {
 class LocationSection extends SectionComponent {
 	constructor(el) {
 		super(el);
+		this.id = "location-section";
+		this.next_section = "cabinet-section";
 		this.dropdown = new Dropdown(
 			"Select a data location: ",
 			["Pittsburgh, PA", "New York City, NY"],
 			{
 				name: "location",
-				onchange: () => getSection("location-section").setProp({ submitted: false })
+				onchange: () => getSection(this.id).setProp({ submitted: false })
 			}
 		);
 	}
@@ -58,7 +63,7 @@ class LocationSection extends SectionComponent {
 			$("div", { className: "indented" }, [
 				$("p", "This is sample paragraph made to see how good this specific styling works. In the future, something more concrete and relating to the selection might be placed here."),
 				this.dropdown.render(),
-				this.renderSubmit("location-section", "cabinet-section")
+				this.renderSubmit()
 			]),
 		];
 	}
@@ -67,6 +72,7 @@ class LocationSection extends SectionComponent {
 class CabinetSection extends SectionComponent {
 	constructor(el)  {
 		super(el);
+		this.id = "cabinet-section";
 		this.enabled = false;
 		this.active_view = null;
 		this.button_text = ["Less than one", "More than one", "Bundles"];
@@ -85,7 +91,7 @@ class CabinetSection extends SectionComponent {
 				$("div", $for(range(3), i => {
 					return $("button", { className: `button ${enabled} ${this.active_view === i ? "button-active" : ""}`, disabled: !this.enabled, onclick: () => this.setView(i) }, this.button_text[i])
 				})),
-				this.renderSubmit("cabinet-section")
+				this.renderSubmit()
 			])
 		];
 	}

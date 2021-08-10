@@ -12,7 +12,6 @@ class Dropdown {
 		let change_callback = () => {
 			let dropdown = document.getElementById("location-dropdown");
 			this.selected = dropdown.selectedIndex;
-			console.log(this);
 			if (this.opts.onchange) {
 				this.opts.onchange();
 			}
