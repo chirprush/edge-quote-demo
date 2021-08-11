@@ -55,12 +55,18 @@ const $ = (tagname, ...attributes) => {
 	let el = document.createElement(tagname);
 	el.innerText = text;
 	for (let child of children) {
-		el.appendChild(child);
+		if (child) {
+			el.appendChild(child);
+		}
 	}
 	for (let [k, v] of Object.entries(opts)) {
 		el[k] = v;
 	}
 	return el;
+}
+
+const $if = (cond, f) => {
+	return cond ? f() : null;
 }
 
 const $for = (array, f) => {
@@ -75,4 +81,4 @@ const getSection = (id) => {
 	return el.__obj;
 }
 
-export { Component, range, $, $for, getSection };
+export { Component, range, $, $if, $for, getSection };

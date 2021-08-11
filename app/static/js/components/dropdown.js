@@ -10,7 +10,7 @@ class Dropdown {
 
 	render() {
 		let change_callback = () => {
-			let dropdown = document.getElementById("location-dropdown");
+			let dropdown = document.getElementById(this.opts.id);
 			this.selected = dropdown.selectedIndex;
 			if (this.opts.onchange) {
 				this.opts.onchange();
@@ -18,7 +18,7 @@ class Dropdown {
 		};
 		return $("div", { className: "dropdown" }, [
 			$("label", this.label, [
-				$("select", { id: "location-dropdown", name: this.opts.name, onchange: change_callback, selectedIndex: this.selected }, this.choices.map(
+				$("select", { id: this.opts.id, name: this.opts.name, onchange: change_callback, selectedIndex: this.selected }, this.choices.map(
 					(opt, i) => $("option", { value: i.toString() }, opt)
 				))
 			])

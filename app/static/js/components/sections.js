@@ -1,5 +1,6 @@
-import { Component, range, $, $for, getSection } from "./utils.js";
+import { Component, range, $, $if, $for, getSection } from "./utils.js";
 import { Dropdown } from "./dropdown.js";
+import { SmallCabinets, Cabinets, Bundles } from "./cabinets.js";
 
 class SectionComponent extends Component {
 	constructor(el) {
@@ -18,7 +19,7 @@ class SectionComponent extends Component {
 
 	renderTitle(title) {
 		let submitted = this.submitted ? "submitted" : "not-submitted";
-		let check = this.submitted ? "✔" : "✖";
+		let check = this.submitted ? "✔" : "";
 		return $("ul", [
 			$("li", { className: "heading" }, title),
 			$("li", { className: `heading-status ${submitted}` }, check)
@@ -51,6 +52,7 @@ class LocationSection extends SectionComponent {
 			"Select a data location: ",
 			["Pittsburgh, PA", "New York City, NY"],
 			{
+				id: "location-dropdown",
 				name: "location",
 				onchange: () => getSection(this.id).setProp({ submitted: false })
 			}
@@ -61,7 +63,7 @@ class LocationSection extends SectionComponent {
 		return [
 			this.renderTitle("Location"),
 			$("div", { className: "indented" }, [
-				$("p", "This is sample paragraph made to see how good this specific styling works. In the future, something more concrete and relating to the selection might be placed here."),
+				$("p", "Pick from a variety of locations across the country for your server to be hosted at. Note: the availability of certain options may depend on the location chosen."),
 				this.dropdown.render(),
 				this.renderSubmit()
 			]),
@@ -75,7 +77,12 @@ class CabinetSection extends SectionComponent {
 		this.id = "cabinet-section";
 		this.enabled = false;
 		this.active_view = null;
-		this.button_text = ["Less than one", "More than one", "Bundles"];
+		this.button_text = ["Partial Cabinets", "Full Cabinets", "Bundles"];
+		this.small_cabinets = new SmallCabinets(() => {
+			getSection(this.id).setProp({ submitted: false });
+		});
+		this.cabinets = new Cabinets();
+		this.bundles = new Bundles();
 	}
 
 	setView(view) {
@@ -84,13 +91,18 @@ class CabinetSection extends SectionComponent {
 
 	render() {
 		let enabled = this.enabled ? "" : "button-disabled";
+		let selected_view;
+		if (this.active_view !== null) {
+			selected_view = [this.small_cabinets, this.cabinets, this.bundles][this.active_view];
+		}
 		return [
 			this.renderTitle("Cabinets"),
 			$("div", { className: "indented" }, [
-				$("p", "This is sample paragraph made to see how good this specific styling works. In the future, something more concrete and relating to the selection might be placed here."),
+				$("p", "Customize the amount, size, power plan, and bandwith of your cabinets. Alternatively, pick from our list of pre-configured bundles."),
 				$("div", $for(range(3), i => {
 					return $("button", { className: `button ${enabled} ${this.active_view === i ? "button-active" : ""}`, disabled: !this.enabled, onclick: () => this.setView(i) }, this.button_text[i])
 				})),
+				$if(this.active_view !== null && this.enabled, () => selected_view.render()),
 				this.renderSubmit()
 			])
 		];
